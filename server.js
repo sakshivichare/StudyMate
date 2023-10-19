@@ -21,6 +21,7 @@ app.get('/home', (req,res)=>{
     res.sendFile(__dirname + "/home.html")
 });
 
+
 // Server is running on the given port 
 app.listen(port,()=>{
     console.log("Server at port ",port," !!!");
