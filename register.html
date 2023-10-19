@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>StudyMate | Register</title>
+
+   <!-- Font Awesome CDN link -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+
+   <!-- Custom CSS file link -->
+   <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+
+<header class="header">
+   <section class="flex">
+      <a href="#" class="logo">StudyMate</a>
+      <div class="icons">
+         <div id="user-btn" class="fas fa-user"></div>
+         <div id="toggle-btn" class="fas fa-sun"></div>
+      </div>
+      <div class="profile">
+         <div class="flex-btn">
+            <a href="login.html" class="option-btn">Login</a>
+            <a href="register.html" class="option-btn">Register</a>
+         </div>
+      </div>
+   </section>
+</header>
+
+<section class="form-container">
+   <form>
+      <h3>Register Now</h3>
+      <p for="reg_email">Your College Email <span>*</span></p>
+      <input type="email" name="email" id="reg_email" placeholder="Enter your email" required maxlength="50" class="box">
+      <p for="reg_password">Your Password <span>*</span></p>
+      <input type="password" name="password" id="reg_password" placeholder="Enter your password" required maxlength="20" class="box">
+      <button type="button" class="btn" onclick="registerForm()">Register</button>
+   </form>
+</section>
+
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+
+<script>
+  const firebaseConfig = {
+   apiKey: "AIzaSyB9Bg5xdfYVmWz-biTweWNNuYzbr-xrT8I",
+   authDomain: "let-ssolveit-auth.firebaseapp.com",
+   projectId: "let-ssolveit-auth",
+   storageBucket: "let-ssolveit-auth.appspot.com",
+   messagingSenderId: "809202793702",
+   appId: "1:809202793702:web:2358a506d48554a4234f27",
+   measurementId: "G-VEMYRD269P"
+  };
+
+  firebase.initializeApp(firebaseConfig);
+  const auth = firebase.auth();
+
+  function registerForm() {
+   const email = document.getElementById("reg_email").value;
+   const password = document.getElementById("reg_password").value;
+ 
+
+   if (email.endsWith("@sjcem.edu.in")) {
+     auth.createUserWithEmailAndPassword(email, password)
+       .then((userCredential) => {
+         alert("Registered Successfully");
+       })
+       .catch((error) => {
+         alert("Registration error: " + error.message);
+       });
+   } else {
+     alert("Please use a valid email address with the domain @sjcem.edu.in.");
+   }
+ }
+ 
+</script>
+
+<footer class="footer">
+   &copy; Copyright @ 2023 by <span>StudyMate</span> | All Rights Reserved!
+</footer>
+<script src="js/script.js"></script>
+
+</body>
+</html>
